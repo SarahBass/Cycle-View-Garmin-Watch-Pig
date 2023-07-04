@@ -239,8 +239,8 @@ dc.drawText(centerX, centerY*1.75, xsmall, "          "+userNotify+"          ",
         
         
         dog.draw(dc);
-        object.draw(dc); //for testing
-       //if (userSTEPS > 3000){ object.draw(dc);}else{}
+        //object.draw(dc); //for testing
+       if (userSTEPS > 3000){ object.draw(dc);}else{}
         if (mySettings.screenShape == 1){
           if(System.getDeviceSettings().screenHeight < 301){dc.setPenWidth(22);}
           else{dc.setPenWidth(30);}
