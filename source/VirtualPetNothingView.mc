@@ -156,18 +156,118 @@ else{userHEART = getHeartRate().toString();}
         dc.drawText(centerX,centerY*1.45,xsmall,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
         dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
        dc.drawText(centerX,  centerY*0.87,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
+
+       dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+if (today.sec%20==0 || today.sec%20==1 || today.sec%20==2 ){ 
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText( centerX,  centerY*1.7, small,  (" ! "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX, centerY*1.7, wordFont,  (""+userBattery), Graphics.TEXT_JUSTIFY_LEFT );}
+else if (today.sec%20==3 || today.sec%20==4 || today.sec%20==5 ){
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText( centerX,  centerY*1.7, small,  (" ^ "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX, centerY*1.7, wordFont,  (""+userCAL), Graphics.TEXT_JUSTIFY_LEFT );}
+else if (today.sec%20==6 ||today.sec%20==7 || today.sec%20==8  ){  
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.7, small, " % ",Graphics.TEXT_JUSTIFY_RIGHT);      
+dc.drawText(centerX, centerY*1.7, wordFont, userHEART, Graphics.TEXT_JUSTIFY_LEFT ); }
+else if (today.sec%20==9 ||today.sec%20==10 || today.sec%20==11 || today.sec%20==12 || today.sec%20==13  ){  
+dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);   
+dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_LEFT); 
+dc.drawText(centerX, centerY*1.65, xsmall, "          "+userAlarm+"          ", Graphics.TEXT_JUSTIFY_LEFT );     
+dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
+dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_RIGHT); 
+dc.drawText(centerX, centerY*1.65, xsmall, "          "+userNotify+"          ", Graphics.TEXT_JUSTIFY_RIGHT );  }
+else{
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
+  dc.drawText(centerX, centerY*1.7, wordFont, (""+userSTEPS), Graphics.TEXT_JUSTIFY_LEFT );}
+
+if (System.getDeviceSettings().screenHeight >= 260){
+dc.setColor(0x555555, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX*1.5, centerY*0.62, smallFont, weather(cond),Graphics.TEXT_JUSTIFY_RIGHT);      
+dc.drawText(centerX*1.5, centerY*0.75, wordFont, " "+TEMP+" "+FC, Graphics.TEXT_JUSTIFY_LEFT );}
+
   }else if (mySettings.screenShape != 1){
         dc.setColor(0xEF1EB8, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX,centerY,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
         dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
        dc.drawText(centerX,  centerY*1.2,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
+  
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+if (today.sec%20==0 || today.sec%20==1 || today.sec%20==2 ){ 
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText( centerX,  centerY*1.7, small,  (" ! "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX, centerY*1.7, wordFont,  (""+userBattery), Graphics.TEXT_JUSTIFY_LEFT );}
+else if (today.sec%20==3 || today.sec%20==4 || today.sec%20==5 ){
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText( centerX,  centerY*1.7, small,  (" ^ "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX, centerY*1.7, wordFont,  (""+userCAL), Graphics.TEXT_JUSTIFY_LEFT );}
+else if (today.sec%20==6 ||today.sec%20==7 || today.sec%20==8  ){  
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.7, small, " % ",Graphics.TEXT_JUSTIFY_RIGHT);      
+dc.drawText(centerX, centerY*1.7, wordFont, userHEART, Graphics.TEXT_JUSTIFY_LEFT ); }
+else if (today.sec%20==9 ||today.sec%20==10 || today.sec%20==11 || today.sec%20==12 || today.sec%20==13  ){  
+dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);   
+dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_LEFT); 
+dc.drawText(centerX, centerY*1.65, xsmall, "          "+userAlarm+"          ", Graphics.TEXT_JUSTIFY_LEFT );     
+dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
+dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_RIGHT); 
+dc.drawText(centerX, centerY*1.65, xsmall, "          "+userNotify+"          ", Graphics.TEXT_JUSTIFY_RIGHT );  }
+else if ((today.sec%20==14 ||today.sec%20==15 || today.sec%20==16) && (System.getDeviceSettings().screenHeight >= 260)){  
+ dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.65, smallFont, "b",Graphics.TEXT_JUSTIFY_CENTER);
+dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.7, xsmall, ("       "+sunriseHour + ":" + sunrise.min.format("%02u")+"AM"+"       "), Graphics.TEXT_JUSTIFY_RIGHT );     
+dc.drawText(centerX, centerY*1.7, xsmall, ("       "+sunsetHour + ":" + sunset.min.format("%02u")+"PM"+"       "), Graphics.TEXT_JUSTIFY_LEFT ); }
+else{
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
+  dc.drawText(centerX, centerY*1.7, wordFont, (""+userSTEPS), Graphics.TEXT_JUSTIFY_LEFT );}
+
+  
   }else{
+      
       dc.setColor(0xEF1EB8, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX,centerY*1.05,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
         dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
-       dc.drawText(centerX,  centerY*1.2,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );}
+       dc.drawText(centerX,  centerY*1.2,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
+       
+if (today.sec%20==0 ||today.sec%20==1 || today.sec%20==2){  
+dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.55, smallFont, "b",Graphics.TEXT_JUSTIFY_CENTER);
+dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX, centerY*1.6, wordFont, ("  "+sunriseHour + ":" + sunrise.min.format("%02u")+"AM"+"   "), Graphics.TEXT_JUSTIFY_RIGHT );     
+dc.drawText(centerX, centerY*1.6, wordFont, ("   "+sunsetHour + ":" + sunset.min.format("%02u")+"PM"+"    "), Graphics.TEXT_JUSTIFY_LEFT ); }
+else{
+  
+  if (today.sec%2 == 0){
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+//dc.drawText( centerX,  centerY*1.6, small,  (" ^ "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX, centerY*1.6, wordFont,  (" ^ 123"+userCAL), Graphics.TEXT_JUSTIFY_CENTER );
+  }else{
+  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+//dc.drawText(centerX, centerY*1.6, small, (" $ "), Graphics.TEXT_JUSTIFY_RIGHT );
+  dc.drawText(centerX, centerY*1.6, wordFont, (" $ 987"+userSTEPS), Graphics.TEXT_JUSTIFY_CENTER );
+  }
 
- 
+dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText( centerX*0.5,  centerY*1.6, small,  (" ! "), Graphics.TEXT_JUSTIFY_RIGHT );
+dc.drawText( centerX*0.5, centerY*1.6, wordFont,  (""+userBattery), Graphics.TEXT_JUSTIFY_LEFT );
+dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+dc.drawText(centerX*1.5, centerY*1.6, small, " % ",Graphics.TEXT_JUSTIFY_RIGHT);      
+dc.drawText(centerX*1.5, centerY*1.6, wordFont, userHEART, Graphics.TEXT_JUSTIFY_LEFT ); }
+
+dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);   
+dc.drawText(centerX, centerY*1.8, small, " a ",Graphics.TEXT_JUSTIFY_LEFT); 
+dc.drawText(centerX, centerY*1.75, xsmall, "          "+userAlarm+"          ", Graphics.TEXT_JUSTIFY_LEFT );     
+dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
+dc.drawText(centerX, centerY*1.8, small, " a ",Graphics.TEXT_JUSTIFY_RIGHT); 
+dc.drawText(centerX, centerY*1.75, xsmall, "          "+userNotify+"          ", Graphics.TEXT_JUSTIFY_RIGHT );  
+
+}
+
+
+
         
         
         
@@ -203,43 +303,8 @@ dc.drawArc(centerX, centerX, centerX, Graphics.ARC_CLOCKWISE, 180, 177 - (userST
   
 }
 
-dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-if (today.sec%20==0 || today.sec%20==1 || today.sec%20==2 ){ 
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-dc.drawText( centerX,  centerY*1.7, small,  (" ! "), Graphics.TEXT_JUSTIFY_RIGHT );
-dc.drawText( centerX, centerY*1.7, wordFont,  (""+userBattery), Graphics.TEXT_JUSTIFY_LEFT );}
-else if (today.sec%20==3 || today.sec%20==4 || today.sec%20==5 ){
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-dc.drawText( centerX,  centerY*1.7, small,  (" ^ "), Graphics.TEXT_JUSTIFY_RIGHT );
-dc.drawText( centerX, centerY*1.7, wordFont,  (""+userCAL), Graphics.TEXT_JUSTIFY_LEFT );}
-else if (today.sec%20==6 ||today.sec%20==7 || today.sec%20==8  ){  
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-dc.drawText(centerX, centerY*1.7, small, " % ",Graphics.TEXT_JUSTIFY_RIGHT);      
-dc.drawText(centerX, centerY*1.7, wordFont, userHEART, Graphics.TEXT_JUSTIFY_LEFT ); }
-else if (today.sec%20==9 ||today.sec%20==10 || today.sec%20==11   ){  
-dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);   
-dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_LEFT); 
-dc.drawText(centerX, centerY*1.65, xsmall, "          "+userAlarm+"          ", Graphics.TEXT_JUSTIFY_LEFT );     
-dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
-dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_RIGHT); 
-dc.drawText(centerX, centerY*1.65, xsmall, "          "+userNotify+"          ", Graphics.TEXT_JUSTIFY_RIGHT );  }
-else if (today.sec%20==12 ||today.sec%20==13 || today.sec%20==14 ){  
- dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-dc.drawText(centerX, centerY*1.65, small, ".",Graphics.TEXT_JUSTIFY_CENTER);
-dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);
-dc.drawText(centerX, centerY*1.7, wordFont, ("  "+sunriseHour + ":" + sunrise.min.format("%02u")+"AM"+"  "), Graphics.TEXT_JUSTIFY_RIGHT );    
-dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
-dc.drawText(centerX, centerY*1.7, wordFont, ("  "+sunsetHour + ":" + sunset.min.format("%02u")+"PM"+"  "), Graphics.TEXT_JUSTIFY_LEFT ); }
-else{
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
-dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
-  dc.drawText(centerX, centerY*1.7, wordFont, (""+userSTEPS), Graphics.TEXT_JUSTIFY_LEFT );}
 
-/*
-dc.setColor(0x00F7EE, Graphics.COLOR_TRANSPARENT);
-dc.drawText(centerX, centerY*1.6, smallFont, weather(cond),Graphics.TEXT_JUSTIFY_RIGHT);      
-dc.drawText(centerX, centerY*1.7, wordFont, " "+TEMP+" "+FC, Graphics.TEXT_JUSTIFY_LEFT ); }
- */       
+     
         
     }
 
